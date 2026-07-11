@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Modern Minesweeper</title>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons Library -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-wrapper">
+        <header class="app-header">
+            <div class="logo">
+                <i data-lucide="layout-grid" class="text-primary icon-logo"></i>
+            </div>
+            <h1>Modern Minesweeper</h1>
+            <p>Advanced puzzle with modern interface</p>
+        </header>
+
+        <main class="game-card glass-effect">
+            <!-- Toolbar Stats -->
+            <div class="toolbar">
+                <div class="stat-box">
+                    <i data-lucide="clock" class="text-primary icon-sm"></i>
+                    <span id="timer-display">00:00</span>
+                </div>
+                <div class="stat-box">
+                    <i data-lucide="flag" class="text-danger icon-sm"></i>
+                    <span id="mine-counter">0</span>
+                </div>
+                <div class="stat-box">
+                    <i data-lucide="trophy" class="text-warning icon-sm"></i>
+                    <span id="best-time">--:--</span>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="controls-bar">
+                <div class="select-wrapper">
+                    <i data-lucide="settings" class="select-icon icon-sm"></i>
+                    <select id="difficulty-select" aria-label="Select Difficulty">
+                        <option value="easy" selected>Easy (9x9)</option>
+                        <option value="medium">Medium (16x16)</option>
+                        <option value="hard">Hard (30x16)</option>
+                    </select>
+                </div>
+                <button id="restart-btn" class="btn btn-icon ripple" aria-label="Restart Game">
+                    <i data-lucide="rotate-ccw"></i>
+                </button>
+            </div>
+
+            <!-- Game Board Area -->
+            <div class="board-layout-wrapper">
+                <div class="board-container">
+                    <!-- Overlay Start Button (Sekarang 100% presisi) -->
+                    <div id="start-overlay" class="start-overlay">
+                        <button id="btn-start-game" class="btn btn-primary btn-lg ripple">
+                            <i data-lucide="play" class="icon-sm"></i> START GAME
+                        </button>
+                    </div>
+                    
+                    <!-- Actual Grid -->
+                    <div id="board" class="board" role="grid" aria-label="Minesweeper Board">
+                        <!-- JS akan mengisi sel di sini -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Status Game -->
+            <div class="game-status">
+                <span id="game-status-badge" class="status-badge">Waiting to start...</span>
+            </div>
+        </main>
+
+        <footer class="app-footer">
+            <p>Modern Minesweeper &copy; 2026</p>
+            <small>Made by Julpiyy Tamvan.</small>
+        </footer>
+    </div>
+
+    <!-- Win / Lose Modal -->
+    <div id="game-modal" class="modal hidden" aria-hidden="true">
+        <div class="modal-content glass-effect">
+            <div id="modal-icon-container" class="modal-icon-container">
+                <!-- Icon disisipkan via JS -->
+            </div>
+            <h2 id="modal-title">Title</h2>
+            <p id="modal-desc">Description</p>
+            
+            <div class="modal-stats">
+                <div class="m-stat">
+                    <small>Time</small>
+                    <strong id="modal-time">00:00</strong>
+                </div>
+                <div class="m-stat">
+                    <small>Difficulty</small>
+                    <strong id="modal-diff">Easy</strong>
+                </div>
+            </div>
+
+            <button id="modal-btn" class="btn btn-primary ripple w-100 mt-3">
+                <i data-lucide="rotate-ccw" class="icon-sm"></i> Play Again
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
